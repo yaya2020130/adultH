@@ -10,7 +10,7 @@ var cors=require('cors')
 // =============================================================
 var app = express();
 var PORT = process.env.PORT || 8080;
-
+require('dotenv').config()
 // Requiring our models for syncing
 var db = require("./models");
 
@@ -28,13 +28,16 @@ app.use(cors());
 app.get("/",(req,res)=>{
   res.send("login")
 })
-// app.get("/login",(req,res)=> {
-//   res.render("login"); 
-// })
-// // signup page
-// app.get("/signup",(req,res)=> {
-//   res.render("login"); 
-// })
+app.post("/api/login",({body:{username,password}},res)=> {
+  db.User.findOne({where:{username:username}}).then(user=>{
+    user.password === password ? res.json(user) : res.json('Incorrect password!')
+  }).catch(err=> res.json("cannot find user!"))
+})
+// signup page
+app.post("/api/signup",({body:{username,password,code}},res)=> {
+
+  db.User.create({username,password, isAdmin: code === process.env.admin_code ? true : false}).then(data=>console.log(data))
+})
 app.get("/patients",(req,res)=>{
   db.Patient.findAll().then(data=>{
     console.log(data);
@@ -122,8 +125,24 @@ app.get('/patient/:id',(req,res)=>{
     })
 });
  
-    
 
+
+ // PUT route for updating patient
+ app.put("/api/patient", function(req, res) {
+   console.log(req.body)
+   db.Patient.update(req.body,
+    {
+      where: {
+        id: req.body.id
+      }
+    })
+    .then(function(dbPatient) {
+      res.json(dbPatient);
+    });
+});
+
+ 
+ 
 
 
 

@@ -13,6 +13,10 @@ module.exports = function(sequelize, DataTypes) {
           validate: {
               len: [8]
           }
+      },
+      isAdmin: {
+          type: DataTypes.BOOLEAN,
+          default: false
       }
   });
 
