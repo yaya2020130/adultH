@@ -128,7 +128,7 @@ app.get('/patient/:id',(req,res)=>{
 
 
  // PUT route for updating patient
- app.put("/api/patient", function(req, res) {
+ app.put("/api/patient/:id", function(req, res) {
    console.log(req.body)
    db.Patient.update(req.body,
     {
@@ -136,8 +136,8 @@ app.get('/patient/:id',(req,res)=>{
         id: req.body.id
       }
     })
-    .then(function(dbPatient) {
-      res.json(dbPatient);
+    .then(function(PatientData) {
+      res.json(PatientData);
     });
 });
 
@@ -155,7 +155,7 @@ app.get('/patient/:id',(req,res)=>{
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({force:false
+db.sequelize.sync({force:true
 }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
