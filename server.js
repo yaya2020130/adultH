@@ -130,10 +130,11 @@ app.get('/patient/:id',(req,res)=>{
  // PUT route for updating patient
  app.put("/api/patient/:id", function(req, res) {
    console.log(req.body)
+   const id=req.params.id
    db.Patient.update(req.body,
     {
       where: {
-        id: req.body.id
+        id: id
       }
     })
     .then(function(PatientData) {

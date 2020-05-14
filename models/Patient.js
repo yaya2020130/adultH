@@ -10,7 +10,7 @@ module.exports=function(sequlize,Datatypes){
     isFoodEaten:Datatypes.BOOLEAN,
     patientReview:Datatypes.STRING,
     doctorAppointment:Datatypes.STRING,
-  
+    date:Datatypes.STRING,
 
   });
   // PatientEmployee = sequelize.define('patient_employee', {
