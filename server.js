@@ -28,7 +28,7 @@ app.use(cors());
 app.get("/",(req,res)=>{
   res.send("login")
 })
-app.post("/api/login",({body:{username,password}},res)=> {
+app.get("/login",({body:{username,password}},res)=> {
   db.User.findOne({where:{username:username}}).then(user=>{
     user.password === password ? res.json(user) : res.json('Incorrect password!')
   }).catch(err=> res.json("cannot find user!"))
@@ -78,6 +78,8 @@ app.post('/api/logbook',(req,res)=>{
   })
 })
 
+app.post('')
+
 // ===========
 
 
@@ -125,7 +127,40 @@ app.get('/patient/:id',(req,res)=>{
     })
 });
  
+//post for login redirect
 
+// app.post('/login', (req,res) =>{
+//   db.User.findOne({
+//     where: {
+//       username: req.body.username
+//     }
+//   }).then(db.User=>())
+// })
+
+app.post("/login", (req, res) => {
+  db.User.findOne({
+      where: {
+          username: req.body.username
+      }
+  }).then(dbUser => {
+if (!dbUser) {
+        req.user = false;
+        res.send("no user found")
+    } else if ((req.body.password, dbUser.password)) {
+           res.send("logged in")
+        req.user = {
+            id: dbUser.id,
+            username: dbUser.username
+        }
+    } else {
+        req.user = false
+        res.send("incorrect password")
+    }
+}).catch(err => {
+
+    res.status(500);
+})
+})
 
  // PUT route for updating patient
  app.put("/api/patient/:id", function(req, res) {
