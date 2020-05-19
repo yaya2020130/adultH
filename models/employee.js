@@ -7,17 +7,17 @@ module.exports = function(sequelize, DataTypes) {
      email: DataTypes.STRING,
      hireDate:DataTypes.DATE,
      salary:DataTypes.DECIMAL,
-     bonus:DataTypes.DECIMAL,
-  start_time:{
-    type:'TIMESTAMP',
-    // defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-    allowNull: false
-  },
-end_time:{
-  type:'TIMESTAMP',
-    // defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-    allowNull: false
-}
+     bonus:DataTypes.DECIMAL
+//   start_time:{
+//     // type:'TIMESTAMP',
+//     // defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+//     allowNull: true
+//   },
+// end_time:{
+//   type:'TIMESTAMP',
+//     // defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+//     allowNull: true
+// }
      
   });
   Employee.associate=function(models){

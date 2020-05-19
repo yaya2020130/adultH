@@ -3,13 +3,13 @@ module.exports=function(sequlize,Datatypes){
     firstname:Datatypes.STRING,
     lastname:Datatypes.STRING,
     age:Datatypes.INTEGER,
-    phone_number:Datatypes.INTEGER,
+    phone_no:Datatypes.INTEGER,
     addres:Datatypes.STRING,
     email:Datatypes.STRING,
     isMedicine:Datatypes.BOOLEAN,
     isFoodEaten:Datatypes.BOOLEAN,
     patientReview:Datatypes.STRING,
-    doctorAppointment:Datatypes.STRING,
+    // doctorAppointment:Datatypes.STRING,
     date:Datatypes.STRING,
 
   });
