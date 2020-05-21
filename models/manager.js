@@ -1,7 +1,10 @@
 module.exports =function(sequelize,Datatypes){
   const Manager=sequelize.define('Manager',{
-   name:Datatypes.STRING,
-   age:Datatypes.STRING
+   firstname:Datatypes.STRING,
+   lastname:Datatypes.STRING,
+   age:Datatypes.STRING,
+   email:Datatypes.STRING,
+   phone_no:Datatypes.INTEGER
 })
 // each manager can have many employees under him
 Manager.associate=function(models){
