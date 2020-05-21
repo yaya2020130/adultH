@@ -4,14 +4,13 @@ module.exports=function(sequlize,Datatypes){
     lastname:Datatypes.STRING,
     age:Datatypes.INTEGER,
     phone_no:Datatypes.INTEGER,
-    addres:Datatypes.STRING,
+    address:Datatypes.STRING,
     email:Datatypes.STRING,
     isMedicine:Datatypes.BOOLEAN,
     isFoodEaten:Datatypes.BOOLEAN,
     patientReview:Datatypes.STRING,
     // doctorAppointment:Datatypes.STRING,
     date:Datatypes.STRING,
-
   });
   // PatientEmployee = sequelize.define('patient_employee', {
   //   date: Sequelize.STRING

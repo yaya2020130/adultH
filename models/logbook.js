@@ -7,12 +7,12 @@ module.exports=function(sequlize,Datatypes){
    photoTaken:Datatypes.BOOLEAN,
     loggedBy: Datatypes.INTEGER
   });
-  //  Logbook.associate=function(models){
-  //   Logbook.belongsTo(models.Patient,{
-  //      foreignKey:{
-  //        allowNull:false
-  //      }
-  //    });
-  //  };
+   Logbook.associate=function(models){
+    Logbook.belongsTo(models.Patient,{
+       foreignKey:{
+         allowNull:false
+       }
+     });
+   };
   return Logbook
 };
