@@ -21,14 +21,14 @@ var db = require("./models");
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors({
+app.use(cors(
 
 
-  origin: [
-    'https://daya-project.herokuapp.com/'
-  ],
-  credentials: true
-}));
+  // origin: [
+  //   'https://daya-project.herokuapp.com/'
+  // ],
+  // credentials: true
+));
 app.use(session(
   {
     secret: process.env.SESSION_SECRET,
